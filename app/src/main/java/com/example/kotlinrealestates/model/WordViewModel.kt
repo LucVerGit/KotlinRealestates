@@ -3,6 +3,13 @@ package com.example.kotlinrealestates.model
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
+
+
+/**
+ * View Model to keep a reference to the word repository and
+ * an up-to-date list of all words.
+ */
 
 class WordViewModel(private val repository: WordRepository) : ViewModel() {
 
@@ -14,10 +21,10 @@ class WordViewModel(private val repository: WordRepository) : ViewModel() {
 
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
-     */
+
     fun insert(word: Word) = viewModelScope.launch {
         repository.insert(word)
-    }
+    }*/
 }
 
 class WordViewModelFactory(private val repository: WordRepository) : ViewModelProvider.Factory {
