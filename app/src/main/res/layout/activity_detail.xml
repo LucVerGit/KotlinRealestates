@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 1 | DetailActivity RootView -->
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Include Toolbar -->
+    <include layout="@layout/toolbar" />
+
+    <!-- FrameLayout for our fragments -->
+    <FrameLayout
+        android:id="@+id/activity_detail_frame_layout"
+
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+       />
+
+
+
+
+
+</LinearLayout>

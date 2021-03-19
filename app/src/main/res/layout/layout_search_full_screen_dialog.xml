@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_layout"
+    android:orientation="vertical">
+
+    <!-- PRICE SURFACE POINTS OF INTEREST DATE ENTRY DATE SALE LOCALISATION NUMBER PHOTOS TYPE ROOM BATH BED -->
+  <!-- double maxSurface,
+    double maxPrice-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/fullscreen_dialog_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/image_content_description"
+                android:padding="8dp"
+                app:srcCompat="@drawable/ic_clear_white_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/fullscreen_dialog_close"
+                android:text="@string/fullscreen_dialog_page_title"
+                android:textColor="@android:color/white"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/fullscreen_dialog_launch_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:padding="8dp"
+                android:text="@string/fullscreen_dialog_search_text"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:padding="10dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!-- TYPE PROPERTY -->
+
+            <TextView
+                android:id="@+id/dialog_type_property_text"
+                style="@style/TextviewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="16dp"
+                android:text="@string/fullscreen_dialog__by_type_of_property"
+
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/dialog_spinner_type_property"
+                style="@style/SearchTextStyle"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:entries="@array/typeProperty"
+                app:layout_constraintLeft_toRightOf="@id/dialog_type_property_text"
+                app:layout_constraintTop_toTopOf="@id/dialog_type_property_text" />
+
+            <!-- PRICE LEVEL -->
+            <TextView
+                android:id="@+id/dialog_price_text"
+                style="@style/TextviewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_large_margin"
+                android:text="@string/fullscreen_dialog__by_price"
+
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dialog_type_property_text" />
+
+            <TextView
+                android:id="@+id/dialog_price_left_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginEnd="15dp"
+                android:text="@string/fullscreen_dialog__value"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/dialog_price_text"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <TextView
+                android:id="@+id/dialog_price_right_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:text="@string/fullscreen_dialog__value"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/dialog_price_text"
+                app:layout_constraintRight_toRightOf="parent" />
+
+
+            <!-- SURFACE -->
+            <io.apptik.widget.MultiSlider
+                android:id="@+id/dialog_seekbar_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+
+                android:layout_marginTop="8dp"
+                app:drawThumbsApart="true"
+                app:layout_constraintTop_toBottomOf="@id/dialog_price_text"
+                app:range1Color="@android:color/holo_orange_dark"
+                app:rangeColor="@color/colorPrimaryDark"
+                app:stepsThumbsApart="100"
+                app:thumbColor="@color/colorPrimaryDark"
+                app:thumbNumber="2"
+                app:trackColor="@android:color/holo_orange_dark"
+                tools:layout_editor_absoluteX="10dp" />
+
+            <TextView
+                android:id="@+id/dialog_surface_text"
+                style="@style/TextviewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_large_margin"
+
+                android:text="@string/fullscreen_dialog__by_surface"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dialog_seekbar_price" />
+
+            <TextView
+                android:id="@+id/dialog_surface_left_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginEnd="15dp"
+                android:text="@string/fullscreen_dialog__value"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/dialog_surface_text"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <TextView
+                android:id="@+id/dialog_surface_right_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:text="@string/fullscreen_dialog__value"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/dialog_surface_text"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <io.apptik.widget.MultiSlider
+                android:id="@+id/dialog_seekbar_surface"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                app:drawThumbsApart="true"
+                app:layout_constraintTop_toBottomOf="@id/dialog_surface_text"
+                app:range1Color="@android:color/holo_orange_dark"
+                app:rangeColor="@color/colorPrimaryDark"
+                app:stepsThumbsApart="5"
+                app:thumbColor="@color/colorPrimaryDark"
+                app:thumbNumber="2"
+
+                app:trackColor="@android:color/holo_orange_dark" />
+
+
+            <!--TOWN-->
+
+            <TextView
+                android:id="@+id/add_agent_firstname_text"
+                style="@style/TextviewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_large_margin"
+                android:text="@string/fullscreen_dialog__by_localisation"
+
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dialog_seekbar_surface" />
+
+            <AutoCompleteTextView
+                android:id="@+id/dialog_town_autocompleteText"
+                style="@style/SearchTextStyle"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_margin"
+                app:layout_constraintLeft_toLeftOf="@id/dialog_spinner_type_property"
+                app:layout_constraintTop_toTopOf="@id/add_agent_firstname_text"
+                tools:ignore="LabelFor" />
+
+
+            <!--COUNTRY-->
+            <TextView
+                android:id="@+id/add_agent_lastname_text"
+                style="@style/TextviewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:text="@string/fullscreen_dialog__by_country"
+
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_agent_firstname_text" />
+
+            <AutoCompleteTextView
+                android:id="@+id/dialog_country_autocompleteText"
+                style="@style/SearchTextStyle"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_margin"
+                app:layout_constraintBaseline_toBaselineOf="@id/add_agent_lastname_text"
+                app:layout_constraintLeft_toLeftOf="@id/dialog_spinner_type_property"
+                tools:ignore="LabelFor" />
+
+
+            <!-- BEDROOM MIN/MAX -->
+
+            <TextView
+                android:id="@+id/dialog_number_min_bedroom_text"
+                style="@style/TextviewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="16dp"
+                android:text="@string/fullscreen_dialog_by_min_bedroom_min"
+
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_agent_lastname_text" />
+
+            <Spinner
+                android:id="@+id/dialog_spinner_number_bedroom_min"
+                style="@style/SearchTextStyle"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:entries="@array/numberBedrooms"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dialog_number_min_bedroom_text" />
+
+
+            <TextView
+                android:id="@+id/dialog_number_bedroom_max"
+                style="@style/TextviewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fullscreen_dialog_by_number_of_bedroom_max"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintLeft_toLeftOf="@id/dialog_spinner_number_bedroom_max"
+                app:layout_constraintTop_toTopOf="@id/dialog_number_min_bedroom_text" />
+
+            <Spinner
+                android:id="@+id/dialog_spinner_number_bedroom_max"
+                style="@style/SearchTextStyle"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40sp"
+                android:entries="@array/numberBedrooms"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/dialog_spinner_number_bedroom_min" />
+
+
+            <!-- STATUS -->
+
+            <TextView
+                android:id="@+id/dialog_status_text"
+                style="@style/TextviewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="16dp"
+                android:text="@string/fullscreen_dialog_by_status"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dialog_spinner_number_bedroom_min" />
+
+            <Spinner
+                android:id="@+id/dialog_spinner_status"
+                style="@style/SearchTextStyle"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:entries="@array/status"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dialog_status_text" />
+
+
+            <!-- AGENT NAME -->
+
+            <TextView
+                android:id="@+id/dialog_agent_text"
+                style="@style/TextviewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/fullscreen_dialog_by_agent"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintLeft_toLeftOf="@id/dialog_spinner_number_bedroom_max"
+                app:layout_constraintTop_toBottomOf="@id/dialog_spinner_number_bedroom_min" />
+
+            <Spinner
+                android:id="@+id/dialog_spinner_agent_name"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/dialog_spinner_status"
+                style="@style/SearchTextStyle"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

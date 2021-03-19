@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="typeProperty">
+        <item>@string/select_type_property</item>
+        <item>@string/typeProperty_flat</item>
+        <item>@string/typeProperty_house</item>
+        <item>@string/typeProperty_room</item>
+    </string-array>
+
+    <string-array name="status">
+        <item>@string/select_status</item>
+        <item>sold</item>
+        <item>in progress</item>
+    </string-array>
+
+    <string-array name="numberRooms">
+        <item>@string/select_number_rooms</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7+</item>
+    </string-array>
+
+    <string-array name="numberBathrooms">
+        <item>@string/select_number_bathrooms</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4+</item>
+
+    </string-array>
+
+    <string-array name="numberBedrooms">
+        <item>@string/select_number_bedrooms</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7+</item>
+    </string-array>
+
+    <string-array name="currency">
+        <item>EUR</item>
+        <item>USD</item>
+    </string-array>
+
+</resources>
